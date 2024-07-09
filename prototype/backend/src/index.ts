@@ -8,6 +8,7 @@ import cors from "cors";
 const prisma = new PrismaClient()
 const PORT=process.env.PORT;
 const app=express();
+require("./database/database").connect();
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors());
@@ -22,6 +23,6 @@ app.use("/room",roomRouter);
 app.use("/play",playgroundRouter)
 
 
-app.listen(3001,()=>{
+app.listen(PORT,()=>{
     console.log(`Server Running on PORT:${PORT}`);
 });

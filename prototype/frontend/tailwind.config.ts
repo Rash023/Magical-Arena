@@ -46,6 +46,9 @@ export default {
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))'
         },
+        green: {
+          DEFAULT: '#16a34a',
+        },
       },
       borderRadius: {
         xl: `calc(var(--radius) + 4px)`,
