@@ -141,6 +141,11 @@ export default function Component() {
             </div>
           ))}
         </div>
+        <div className="mt-8 flex justify-between">
+        <Button>Start Game</Button>
+        <Button>End Game</Button>
+        <Button>Exit Room</Button>
+      </div>
       </div>
     </div>
   );
