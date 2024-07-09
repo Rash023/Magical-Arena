@@ -3,8 +3,13 @@ import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
 import axios from "axios";
+interface ComponentProps {
+  params: {
+    id: string;
+  };
+}
 
-export default function Component() {
+export default function Component({ params: { id } }: ComponentProps) {
   const [player1, setPlayer1] = useState({
     name: "Player 1",
     strength: 24,
@@ -40,7 +45,7 @@ export default function Component() {
 
   async function diceHandler() {
     try {
-      const response = await axios.get("http://localhost:3001/play/roll");
+      const response = await axios.get("http://localhost:3001/play/roll", { withCredentials: true });
       if (response.data && response.data.val) {
         setDiceVal(response.data.val);
         setRollsCount(rollsCount + 1);
@@ -74,6 +79,9 @@ export default function Component() {
 
   return (
     <div className="bg-background rounded-lg border p-6 w-full max-w-4xl mx-auto mt-32">
+      <div className="mb-6">
+        <h2 className="text-2xl font-bold">Room ID: {id}</h2>
+      </div>
       <div className="grid grid-cols-2 gap-8">
         <div className="bg-card rounded-lg p-6 flex flex-col items-center gap-4">
           <div className="flex items-center gap-2">

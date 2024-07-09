@@ -5,7 +5,6 @@ import { useRouter } from "next/navigation";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-
 export default function Component() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -23,7 +22,7 @@ export default function Component() {
      
       if (response.status === 200) {
         console.log("Signup successful!");
-  
+
         router.push("/home");
       } else {
         //todo: add a toaster for signin  fail

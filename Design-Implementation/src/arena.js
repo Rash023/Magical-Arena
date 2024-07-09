@@ -9,67 +9,12 @@ class Arena {
     this.roundCount = 1;
   }
 
+  //function to roll the dice
   rollDie() {
     return Math.floor(Math.random() * 6) + 1;
   }
 
-  DisplayStats(
-    attacker,
-    defender,
-    attackRoll,
-    defendRoll,
-    attackDamage,
-    defendStrength
-  ) {
-    console.log(
-      `  ----------------------------------------Round:${this.roundCount}----------------------------------------------`
-    );
-    if (attacker == this.playerA) {
-      console.log(" ");
-      console.log(
-        `${attacker.name} rolled an attack die: ${attackRoll}                                   ${defender.name} rolled a defend die: ${defendRoll}`
-      );
-      console.log(
-        `Attack Damage:${attackDamage}                                                        Defending Strength:${defendStrength}`
-      );
-    } else {
-      console.log(" ");
-      console.log(
-        `${defender.name} rolled a defend die: ${defendRoll}                                   ${attacker.name} rolled an attack die: ${attackRoll} `
-      );
-      console.log(
-        `Defending Strength:${defendStrength}                                                      Attack Damage:${attackDamage}`
-      );
-    }
-  }
-
-  displayScores() {
-    console.log(" ");
-    console.log(
-      `              ${this.playerA.name}                                                      ${this.playerB.name}`
-    );
-    console.log("");
-    console.log(
-      "       Health | Strength | Attack                                Health | Strength | Attack"
-    );
-    console.log(
-      "    ---------------------------------                         -------------------------------"
-    );
-    console.log(
-      `         ${String(this.playerA.health).padEnd(4)} |    ${String(
-        this.playerA.strength
-      ).padEnd(5)} |   ${String(this.playerA.attack).padEnd(
-        20
-      )}                  ${String(this.playerB.health).padEnd(
-        4
-      )} |    ${String(this.playerB.strength).padEnd(5)} |    ${String(
-        this.playerB.attack
-      )}`
-    );
-    console.log(" ");
-    console.log();
-  }
-
+  //function to calculate damage dealt to the defender
   calculateDamage(attacker, defender) {
     const attackRoll = this.rollDie();
     const defendRoll = this.rollDie();
@@ -90,6 +35,7 @@ class Arena {
     return damage > 0 ? damage : 0;
   }
 
+  //game play logic
   fight() {
     while (this.playerA.isAlive() && this.playerB.isAlive()) {
       const damage = this.calculateDamage(
@@ -117,6 +63,65 @@ class Arena {
         `                                        ${this.playerB.name} Wins!                               `
       );
     }
+  }
+
+  //function to display the game stats
+  DisplayStats(
+    attacker,
+    defender,
+    attackRoll,
+    defendRoll,
+    attackDamage,
+    defendStrength
+  ) {
+    console.log(
+      `  ----------------------------------------Round:${this.roundCount}----------------------------------------------`
+    );
+    if (attacker == this.playerA) {
+      console.log(" ");
+      console.log(
+        `${attacker.name} rolled an attack die: ${attackRoll}                                   ${defender.name} rolled a defend die: ${defendRoll}`
+      );
+      console.log(
+        `Attack Damage:${attackDamage}                                                    Defending Strength:${defendStrength}`
+      );
+    } else {
+      console.log(" ");
+      console.log(
+        `${defender.name} rolled a defend die: ${defendRoll}                                   ${attacker.name} rolled an attack die: ${attackRoll} `
+      );
+      console.log(
+        `Defending Strength:${defendStrength}                                                    Attack Damage:${attackDamage}`
+      );
+    }
+  }
+
+  //function display scores
+  displayScores() {
+    console.log(" ");
+    console.log(
+      `              ${this.playerA.name}                                                      ${this.playerB.name}`
+    );
+    console.log("");
+    console.log(
+      "       Health | Strength | Attack                                Health | Strength | Attack"
+    );
+    console.log(
+      "    ---------------------------------                         -------------------------------"
+    );
+    console.log(
+      `         ${String(this.playerA.health).padEnd(4)} |    ${String(
+        this.playerA.strength
+      ).padEnd(5)} |   ${String(this.playerA.attack).padEnd(
+        20
+      )}                  ${String(this.playerB.health).padEnd(
+        4
+      )} |    ${String(this.playerB.strength).padEnd(5)} |    ${String(
+        this.playerB.attack
+      )}`
+    );
+    console.log(" ");
+    console.log();
   }
 }
 

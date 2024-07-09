@@ -12,12 +12,25 @@ export default  function Component() {
   const router = useRouter();
   const [roomID, setRoomId] = useState<Number|null>();
 
-  
+  async function createRoomHandler(){
+    try{
+      const response=await axios.get("http://localhost:3001/room/create");
+      if(response.status===200){
+        const id=response.data.roomId;
+        console.log(id);
+        router.push(`/playground/${id}`);
+
+      }
+    }
+    catch(e){
+        console.log("An error occured");
+    }
+  }
   async function joinRoomHandler(){
     try{
       const response=await axios.post("http://localhost:3001/play/join",{roomID});
       if(response.status===200){  
-        router.push('/room');
+        router.push(`/playground/${roomID}`);
       }
       else{
         //todo: add a toaster
@@ -59,9 +72,7 @@ export default  function Component() {
                   </form>
                   <div className="flex flex-col w-max gap-2">
                     <p className="px-28">OR</p>
-                    <Button type="submit" className="justify-left" onClick={() => {
-                      router.push(`/room/xyz`);
-                    }}>Create Room</Button>
+                    <Button type="submit" className="justify-left" onClick={createRoomHandler}>Create Room</Button>
                   </div>
                 </div>
               </div>

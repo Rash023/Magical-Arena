@@ -4,6 +4,7 @@
   "description": "A simple simulation of a magical arena where two players fight until one dies.",
   "main": "src/index.js",
   "scripts": {
+    "dev": "node src/index.js",
     "test": "jest"
   },
   "repository": {

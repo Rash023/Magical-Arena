@@ -12,6 +12,10 @@ const gameSchema=new mongoose.Schema({
             ref:"User",
             required:true,
         },
+        playerName:{
+            type:String,
+            required:true,
+        },
         attack:{
             type:Number,
             required:true,

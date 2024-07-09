@@ -8,6 +8,7 @@ const JWT_SECRET = process.env.JWT_SECRET || "";
 export async function createRoomController(req: Request, res: Response) {
     try {
         const token = req.cookies.token;
+        console.log(token);
 
         // Generating a 4 digit room code
         const roomId = Math.floor(Math.random() * 9000) + 1000;
@@ -17,7 +18,7 @@ export async function createRoomController(req: Request, res: Response) {
         if (check) {
             return res.status(411).json({ message: "Room already exists!" });
         }
-
+        console.log(JWT_SECRET);
         const decoded: any = jwt.verify(token, JWT_SECRET);
         const userId = decoded.userId;
 
@@ -38,11 +39,11 @@ export async function createRoomController(req: Request, res: Response) {
 // Handler to join rooms
 export async function joinRoomController(req: Request, res: Response) {
     const { roomId } = req.body;
-
     try {
         // Checking if the room exists
         const room = await Room.findOne({ roomId });
         const token = req.cookies.token;
+        console.log(token);
 
         if (!room) {
             return res.status(404).json({ message: "Room not found!" });

@@ -27,6 +27,7 @@ export async function signupHandler(req: { body: Auth }, res: any) {
         res.cookie("token", token, {
             httpOnly: true,
             maxAge: 3600000,
+            sameSite: "strict",
         });
 
         return res.status(200).json({ message: "User registered successfully" });
