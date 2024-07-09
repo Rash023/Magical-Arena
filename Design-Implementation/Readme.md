@@ -20,8 +20,6 @@ This project simulates a magical arena where two players fight until one dies. E
 - **`tests/`**
   - `player.test.js`: Unit tests for the `Player` class.
   - `arena.test.js`: Unit tests for the `Arena` class.
-- **`README.md`**: Instructions on how to run the code and tests.
-- **`.gitignore`**: Ignore `node_modules` and other unnecessary files.
 
 ## How to Run
 
@@ -34,8 +32,8 @@ This project simulates a magical arena where two players fight until one dies. E
 1. **Clone the repository**:
 
    ```sh
-   git clone <repository-url>
-   cd magical-arena
+   git clone https://github.com/Rash023/Magical-Arena.git
+   cd magical-arena/Design-Implementation
    ```
 
 2. **Install the dependencies**:
@@ -46,7 +44,7 @@ This project simulates a magical arena where two players fight until one dies. E
 
 3. **Run the game simulation**:
    ```sh
-   node src/index.js
+   npm run dev
    ```
 
 ### Running Tests
@@ -83,3 +81,39 @@ This project simulates a magical arena where two players fight until one dies. E
 ## Example Output
 
 Here is an example of what you might see in your terminal after running the game simulation:
+
+```sh
+
+  ----------------------------------------Round:1----------------------------------------------
+
+john rolled an attack die: 2                                   doe rolled a defend die: 4
+Attack Damage:20                                                        Defending Strength:40
+
+              john                                                      doe
+
+       Health | Strength | Attack                                Health | Strength | Attack
+    ---------------------------------                         -------------------------------
+         10   |    5     |   10                                    20   |    10    |    5
+
+```
+
+## Example Test Output
+
+Here is an example of what you might see in your terminal after running the unit tests:
+
+```sh
+PASS tests/player.test.js
+✓ Player should be alive when health is greater than 0 (4 ms)
+✓ Player should be dead when health is 0 or less (1 ms)
+✓ Player should take damage correctly (1 ms)
+
+PASS tests/arena.test.js
+✓ Arena should correctly determine the first attacker based on health (1 ms)
+✓ Arena should calculate damage correctly (1 ms)
+
+Test Suites: 2 passed, 2 total
+Tests: 5 passed, 5 total
+Snapshots: 0 total
+Time: 1.243 s
+
+```
