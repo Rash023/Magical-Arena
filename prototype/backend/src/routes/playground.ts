@@ -1,8 +1,9 @@
 import express from "express";
 const playgroundRouter=express.Router();
-import { diceHandler } from "../controllers/playgroundHandler";
+import { startGame, updateStats} from "../controllers/playgroundHandler";
 
-playgroundRouter.get("/roll",diceHandler);
+playgroundRouter.post("/start",startGame);
+playgroundRouter.post("/update",updateStats);
 
 
 export default playgroundRouter;

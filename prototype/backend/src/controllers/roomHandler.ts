@@ -26,6 +26,7 @@ export async function createRoomController(req: Request, res: Response) {
             roomId,
             players: [userId]  // Initial player in the room
         });
+        console.log(newRoom.players);
 
         return res.status(200).json({ data: newRoom, message: "Room created successfully" });
     } catch (error) {
