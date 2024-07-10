@@ -4,6 +4,11 @@
 
 This project simulates a magical arena where two players fight until one dies. Each player has `health`, `strength`, and `attack` attributes. Players take turns attacking each other until one player's health reaches 0. The player with lower health attacks first at the start of the match.
 
+## Tech Stack
+
+- Javascript
+- Nodejs
+
 ## How It Works
 
 - **Players**: Each player is defined by `name`, `health`, `strength`, and `attack`.
